@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link th:href="@{/css/keyword-tree.css}" rel="stylesheet" type="text/css">
+	<title>Keyword Tree</title>
+</head>
+
+<body>
+	<div class="keyword-tree-form">
+		<form th:action="@{/keyword_tree/wiki}" th:object="${keywordTreeForm}" method="post">
+
+			<div th:if="${#fields.hasErrors('keyword')}" th:errors="*{keyword}" class="alert-danger"></div>
+			<div class="form-group">
+				<label for="keyword">探索キーワード:</label>
+				<div class="col-sm-13">
+					<input type="text" th:field="*{keyword}" class="form-control" id="keyword">
+				</div>
+				<button type="submit" class="btn btn-primary btn-search">探索</button>
+			</div>
+		</form>
+	</div>
+
+	<div class="complete-msg">[[${searchComplete}]]</div>
+
+	<!-- 探索したキーワードツリーを出力 -->
+	<div class="keyword-tree-output">
+		<th:block th:each="e : ${dispKeywords}">
+			<div th:style="|margin-left: ${e.getLevel * 20}px|">[[${e.getDispKeyword}]]</div>
+		</th:block>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+.keyword-tree-form {
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+.btn-search {
+  display: block;
+  margin: 10px 0 0 0;
+}
+
+.complete-msg {
+  margin-left: 50px;
+  margin-bottom: 10px;
+}
+
+.keyword-tree-output {
+  margin-left: 50px;
+}
